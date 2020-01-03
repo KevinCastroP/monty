@@ -35,4 +35,5 @@ typedef struct instruction_s
 } instruction_t;
 /*function to free a list*/
 void free_dlistint(stack_t *head);
+void op_push(stack_t **stack, unsigned int line_number);
 #endif /*_MONTY_H*/
