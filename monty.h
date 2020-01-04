@@ -1,4 +1,4 @@
-B#ifndef _MONTY_H
+#ifndef _MONTY_H
 #define _MONTY_H
 #include <stdlib.h>
 #include <stdio.h>
@@ -37,5 +37,9 @@ typedef struct instruction_s
 void free_dlistint(stack_t *head);
 void op_push(stack_t **stack, unsigned int line_number);
 void op_pall(stack_t **header, unsigned int n);
-void pint(stack_t **stack, unsigned int line_number);
+void op_pint(stack_t **stack, unsigned int line_number);
+void op_add(stack_t **stack, unsigned int line_number);
+void op_nop(stack_t **stack, unsigned int line_number);
+void op_pop(stack_t **stack, unsigned int line_number);
+void op_swap(stack_t **stack, unsigned int line_number);
 #endif /*_MONTY_H*/
