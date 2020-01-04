@@ -1,4 +1,4 @@
-#ifndef _MONTY_H
+B#ifndef _MONTY_H
 #define _MONTY_H
 #include <stdlib.h>
 #include <stdio.h>
@@ -36,4 +36,6 @@ typedef struct instruction_s
 /*function to free a list*/
 void free_dlistint(stack_t *head);
 void op_push(stack_t **stack, unsigned int line_number);
+void op_pall(stack_t **header, unsigned int n);
+void pint(stack_t **stack, unsigned int line_number);
 #endif /*_MONTY_H*/

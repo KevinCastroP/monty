@@ -1,22 +1,26 @@
 #include "monty.h"
 /**
- *
+ * op_push - function to pushes an element to the stack
+ * @header: contain the list
+ * @line_number: numbers
+ * Return: element number
  */
-void op_push(stack_t **stack, unsigned int line_number)
+void op_push(stack_t **header, unsigned int line_number)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
+	stack_t *new_head = malloc(sizeof(stack_t));
 
-	if (new_node == NULL)
+	if (new_head == NULL)
 	{
-		free(new_node);
+		free(new_head);
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	new_node->next = *stack;
-	new_node->prev = NULL;
-	if (*stack != NULL)
+	new_head->n = number;
+	new_head->next = *header;
+	new_head->prev = NULL;
+	if (*header != NULL)
 	{
-		(*stack)->prev = new_node;
+		(*header)->prev = new_head;
 	}
-	*stack = new_node;
+	*header = new_head;
 }

@@ -1,4 +1,5 @@
 #include "monty.h"
+int number = 0;
 /**
  * main - function of Monty project
  * @argc: counter argument
