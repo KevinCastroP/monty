@@ -1,13 +1,14 @@
 #include "monty.h"
 /**
- * op_push - function to pushes an element to the stack
+ * op_push - function to push an element to the stack
  * @header: contain the list
  * @line_number: numbers
  * Return: element number
  */
-void op_push(stack_t **header, unsigned int line_number)
+void op_push(stack_t **header, unsigned int n)
 {
 	stack_t *new_head = malloc(sizeof(stack_t));
+	(void)(n);
 
 	if (new_head == NULL)
 	{

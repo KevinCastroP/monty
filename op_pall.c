@@ -9,6 +9,7 @@ void op_pall(stack_t **header, unsigned int n)
 {
 	int k = 0;
 	stack_t *count = *header;
+	(void)(n);
 
 	if (count == NULL)
 	{

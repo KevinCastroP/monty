@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 			num = strtok(NULL, "\n\t\r ");
 			if (num != NULL)
 				printf("%s\n", num);
-			f = operations(token);
+			f = get_op_func(token);
 			if (f != NULL)
 				f(&header, countline);
 			line_size = getline(&buffer, &buffsize, file_name);
