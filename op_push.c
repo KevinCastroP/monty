@@ -1,27 +1,45 @@
 #include "monty.h"
 /**
  * op_push - function to push an element to the stack
- * @header: contain the list
+ * @stack: contain the list
  * @line_number: numbers
  * Return: element number
  */
-void op_push(stack_t **header, unsigned int n)
+void op_push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_head = malloc(sizeof(stack_t));
-	(void)(n);
+	stack_t *new_node;
+	char *value = kc.know;
+	int k;
 
-	if (new_head == NULL)
+	if (value == NULL)
 	{
-		free(new_head);
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
-	new_head->n = number;
-	new_head->next = *header;
-	new_head->prev = NULL;
-	if (*header != NULL)
+	else if (validate(value))
 	{
-		(*header)->prev = new_head;
+		k = atoi(value);
 	}
-	*header = new_head;
+	else
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free_space(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		free(new_node);
+		fprintf(stderr, "Error: malloc failed\n");
+		free_space(stack);
+		exit(EXIT_FAILURE);
+	}
+	new_node->n = k;
+	new_node->next = *stack;
+	new_node->prev = NULL;
+	if (*stack != NULL)
+		(*stack)->prev = new_node;
+	*stack = new_node;
 }

@@ -7,23 +7,18 @@
  */
 void op_swap(stack_t **stack, unsigned int line_number)
 {
-	int num1;
-	int num2;
+	int gotit_n;
 
-	if (*stack == NULL)
+	if (*stack != NULL && (*stack)->next != NULL)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n",
-		line_number);
+		gotit_n = (*stack)->next->n;
+		(*stack)->next->n = (*stack)->n;
+		(*stack)->n = gotit_n;
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
-	else if ((*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n",
-		line_number);
-		exit(EXIT_FAILURE);
-	}
-	num1 = (*stack)->n;
-	num2 = (*stack)->next->n;
-	(*stack)->n = num2;
-	(*stack)->next->n = num1;
 }

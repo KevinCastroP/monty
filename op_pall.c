@@ -1,24 +1,18 @@
 #include "monty.h"
 /**
  * op_pall - function to print all elements of a double linkedlist
- * @header: pointer to a value
- * @n: a value
+ * @stack: pointer to a value
+ * @line_number: a value
  * Return: the number of nodes
  */
-void op_pall(stack_t **header, unsigned int n)
+void op_pall(stack_t **stack, unsigned int line_number)
 {
-	int k = 0;
-	stack_t *count = *header;
-	(void)(n);
+	stack_t *gotit = *stack;
 
-	if (count == NULL)
+	while (gotit != NULL)
 	{
-		return;
+		printf("%d\n", (gotit)->n);
+		gotit = (gotit)->next;
 	}
-	while (count != NULL)
-	{
-		printf("%d\n", count->n);
-		count = count->next;
-		k++;
-	}
+	(void)line_number;
 }

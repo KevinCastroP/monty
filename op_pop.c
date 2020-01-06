@@ -7,18 +7,20 @@
  */
 void op_pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *next;
+	stack_t *gotit = *stack;
 
-	if (stack == NULL || *stack == NULL)
+	if (gotit != NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		gotit = (*stack)->next;
+		if (gotit != NULL)
+			gotit->prev = NULL;
+		free(*stack);
+		*stack = gotit;
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		free_space(stack);
 		exit(EXIT_FAILURE);
 	}
-	next = *stack;
-	if ((*next).next != NULL)
-	{
-		(*(*next).next).prev = NULL;
-	}
-	*stack = (*next).next;
-	free(next);
 }
